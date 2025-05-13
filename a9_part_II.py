@@ -2,10 +2,9 @@
 import re, string, calendar
 from wikipedia import page
 from bs4 import BeautifulSoup
+
 from typing import List, Match
 from utilities import *
-
-# Assignment 8 Part II
 
 
 def get_planet_radius(planet_name: str) -> str:
@@ -18,8 +17,8 @@ def get_planet_radius(planet_name: str) -> str:
         radius of the given planet
     """
     infobox_text = clean_text(get_first_infobox_text(get_page_html(planet_name)))
-    # TODO: fill this in
-    pattern = "REPLACE ME"
+    # TODO: fill this in !late
+    pattern = "(Polar radius\s*)(?P<radius>[\d.]+)"
     error_text = "Page infobox has no polar radius information"
     match = get_match(infobox_text, pattern, error_text)
     return match.group("radius")
@@ -35,8 +34,8 @@ def get_birth_date(name: str) -> str:
         birth date of the given person
     """
     infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
-    # TODO: fill this in
-    pattern = "REPLACE ME"
+    # TODO: fill this in !done
+    pattern = "Born(?P<name>\D+)(?P<birth>\d{4}-\d{2}-\d{2})"
     error_text = (
         "Page infobox has no birth information (at least none in xxxx-xx-xx format)"
     )
